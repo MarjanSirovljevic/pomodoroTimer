@@ -1,0 +1,145 @@
+html,body {
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    color: #FFFFFF;
+    background: #2C3E50;
+
+}
+.container {
+    height: 100%;
+    margin: 0 auto;
+    max-width: 750px;  
+}
+
+/* ------------------- GLOBAL AREA ------------------- */
+
+.header {
+    align-items: flex-end;
+    border-bottom: 1.25px solid #FFFFFF;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    margin: auto;
+    width: 90%;
+}
+.main {
+    display: flex;
+    flex: 5;
+    justify-content: center;
+    align-items: center;
+}
+.footer {
+    align-items: flex-start;
+    border-top: 1.25px solid #FFFFFF;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    margin: auto;
+    width: 90%;
+}
+.hide {
+    display:none !important;
+}
+
+/* ------------------- CLOCK AREA ------------------- */
+
+div#clockField {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.btn-hide {
+    display: none;
+}
+#settingsDiv {
+    flex: 1;
+    padding-bottom: 10px;
+}
+#message {
+    font-size: 24px;
+    flex: 5;
+    padding-bottom: 10px;
+}
+#clockField #message {
+    text-align: right;
+}
+#buttons {
+    padding-top: 14px;
+}
+#clock {
+    font-size: 4em;
+}
+
+/* ------------------- FORM AREA ------------------- */
+
+div#settingsField {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+#settingsField #message {
+    text-align: center;
+}
+#formArea {
+    margin: auto;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+}
+#formArea>div {
+    display: flex;
+    margin: 5px;
+}
+#formArea>div>label {
+    flex: 8;
+    padding: 8px;
+    margin-right: 10px;
+    text-align: right;
+}
+#formArea>div>input {
+    flex: 1;
+    text-align: center;
+    padding: 8px;
+    width: 100px;
+}
+
+/* ------------------- BUTTONS ------------------- */
+
+#buttons button {
+    background: #2C3E50;
+    border: none;
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    cursor: initial;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    padding: 8px 20px;
+    margin: 0 3px;
+    width: 100px;
+}
+#buttons button:hover {
+    border: 1px solid #FC4349;
+    color: #FC4349;
+    cursor: pointer;
+    
+}
+#settings {
+    background: #2C3E50;
+    border: none;
+    color: #FFFFFF;
+    cursor: initial;
+}
+#settings:hover {
+    color: #FC4349;
+    cursor: pointer;
+}
+
+/* h6 {
+    color: #2C3E50;
+    color: #FC4349;
+    color: #D7DADB;
+    color: #6DBCDB;
+    color: #FFFFFF;
+} */
+

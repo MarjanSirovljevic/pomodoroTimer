@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pomodoroDev</title>
+ <link rel="stylesheet" type="text/css" href="./css/pomodoroDev.css" />
+ <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div id="clockField" class="hide">
+            <div class="header">
+                <div id="settingsDiv">
+                    <button id="settings"><i class="fa fa-cog fa-3x" aria-hidden="true"></i></button>
+                </div>
+                <div id="message"></div>
+            </div>
+            <div class="main">
+                <div id="clock">
+                    <span id="minutes"></span>
+                    <span>:</span>
+                    <span id="seconds"></span>
+                </div>
+            </div>
+            <div class="footer">
+                <div id="buttons">
+                    <button id="start">START</button>
+                    <button id="pause">PAUSE</button>
+                    <button id="reset">RESET</button>
+                    <button id="resume">RESUME</button>
+                    <button id="done">DONE</button>
+                    <button id="skip">SKIP</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="settingsField">
+            <div class="header">
+                <div id="message">
+                    Pomodoro Timer
+                </div>
+            </div>
+            <div class="main">
+                <div id="formArea">
+                    <div>
+                        <label for="work">Working Time [minutes]</label>
+                        <input type="number" value="25" id="work">
+                    </div>
+                    <div>
+                        <label for="short">Short Break [minutes]</label>
+                        <input type="number" value="5" id="short">
+                    </div>
+                    <div>
+                        <label for="long">Long Break [minutes]</label>
+                        <input type="number" value="15" id="long">
+                    </div>
+                    <div>
+                        <label for="delay">Delay [cycles]</label>
+                        <input type="number" value="4" id="delay">
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div id="buttons">
+                    <button id="submit">SUBMIT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/pomodoroDev.js"></script>
+</body>
+</html>
