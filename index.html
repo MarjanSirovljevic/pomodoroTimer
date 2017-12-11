@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <div id="clockField" class="hide">
+        <div id="clockField" class="hide    ">
             <div class="header">
                 <div id="settingsDiv">
                     <button id="settings"><i class="fa fa-cog fa-3x" aria-hidden="true"></i></button>
@@ -26,35 +26,32 @@
             </div>
             <div class="footer">
                 <div id="buttons">
-                    <button id="start">START</button>
-                    <button id="pause">PAUSE</button>
-                    <button id="reset">RESET</button>
-                    <button id="resume">RESUME</button>
-                    <button id="done">DONE</button>
-                    <button id="skip">SKIP</button>
+                    <button id="start" class="action-buttons">START</button>
+                    <button id="pause" class="action-buttons">PAUSE</button>
+                    <button id="reset" class="action-buttons">RESET</button>
+                    <button id="resume" class="action-buttons">RESUME</button>
+                    <button id="done" class="action-buttons">DONE</button>
+                    <button id="skip" class="action-buttons">SKIP</button>
                 </div>
             </div>
         </div>
-
-        <div id="settingsField">
+        <div id="formField">
             <div class="header">
-                <div id="message">
-                    Pomodoro Timer
-                </div>
+                <div id="message">Pomodoro Timer</div>
             </div>
             <div class="main">
                 <div id="formArea">
                     <div>
-                        <label for="work">Working Time [minutes]</label>
-                        <input type="number" value="25" id="work">
+                        <label for="work">Work Time [minutes]</label>
+                        <input type="number" value="0.3" id="work">
                     </div>
                     <div>
                         <label for="short">Short Break [minutes]</label>
-                        <input type="number" value="5" id="short">
+                        <input type="number" value="0.1" id="short">
                     </div>
                     <div>
                         <label for="long">Long Break [minutes]</label>
-                        <input type="number" value="15" id="long">
+                        <input type="number" value="0.2" id="long">
                     </div>
                     <div>
                         <label for="delay">Delay [cycles]</label>

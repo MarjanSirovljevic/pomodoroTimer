@@ -74,12 +74,12 @@ div#clockField {
 
 /* ------------------- FORM AREA ------------------- */
 
-div#settingsField {
+#formField {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
-#settingsField #message {
+#formField #message {
     text-align: center;
 }
 #formArea {
@@ -117,20 +117,30 @@ div#settingsField {
     padding: 8px 20px;
     margin: 0 3px;
     width: 100px;
+    cursor: initial;
 }
 #buttons button:hover {
     border: 1px solid #FC4349;
     color: #FC4349;
-    cursor: pointer;
-    
+    cursor: pointer;  
 }
-#settings {
+#buttons button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+#buttons button:disabled:hover {
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+button#settings {
     background: #2C3E50;
     border: none;
     color: #FFFFFF;
     cursor: initial;
 }
-#settings:hover {
+button#settings:hover {
     color: #FC4349;
     cursor: pointer;
 }
