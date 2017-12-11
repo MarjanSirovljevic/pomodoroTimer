@@ -35,7 +35,7 @@ function main() {
     var $message = document.getElementById('message');
 
     // loading the alarm audio
-    var alarm = new Audio('../audio/Marimba-logo.mp3');
+    // var alarm = new Audio('../audio/Marimba-logo.mp3');
 
     submitFormValues();
     initialState();
@@ -150,6 +150,7 @@ function main() {
         $clockField.classList.add('hide');
         $formField.classList.remove('hide');
     });
+
     // ACTION BUTTONS EVENT LISTENERS
     $done.addEventListener('click', function(){
         clearInterval(activeInterval);
