@@ -7,7 +7,7 @@ function main() {
     // input field variables
     var workingTime, shortBreakTime, longBreakTime, pomodoroes;
     // initial values variables
-    var secondsRemaining, currentPomodoro, timerActive, total, activeInterval, j, pomodoroArray;
+    var secondsRemaining, currentPomodoro, timerActive, total, activeInterval, j, pomodoroArray, updateColor;
 
     // ----------------   D O M
     // ---------  formField DOM variables 
@@ -34,8 +34,16 @@ function main() {
     var $seconds = document.getElementById('seconds');
     var $message = document.getElementById('message');
 
-    // loading the alarm audio
-    // var alarm = new Audio('../audio/Marimba-logo.mp3');
+    // ----------- Canvas Area
+
+    var canvas = document.querySelector('canvas');
+    var x = 420;
+    var y = 420;
+    var r = 140;
+
+    canvas.width = x;
+    canvas.height = y;
+    var c = canvas.getContext('2d');
 
     submitFormValues();
     initialState();
@@ -43,6 +51,30 @@ function main() {
 
     // =============== ( FUNCTIONS ) =============== //
 
+    function animatedClock() {
+        c.clearRect(0, 0, x, y);
+        total = getTimeRemaining(secondsRemaining);
+        var time = pomodoroArray[j]*60 - secondsRemaining;
+        var increment = 360 / (pomodoroArray[j]*60) * time;
+        var $minutes = ('0' + total.minutes).slice(-2);
+        var $seconds = ('0' + total.seconds).slice(-2)
+        var text = $minutes + ':' + $seconds;
+        // dinamic circle
+        c.beginPath();
+        c.arc(x/2, y/2, r, degToRad(-90), degToRad(increment - 90), false);
+        c.lineWidth = 12;
+        c.strokeStyle = updateColor;
+        c.stroke();
+        c.font = '80px Cambria';
+        c.textAlign = 'center';
+        c.fillStyle = updateColor;
+        c.fillText(text, x/2, y/2 + 25);
+        hardcodedCircles();
+    }
+    function degToRad(deg) {
+        var radians = (Math.PI * deg) / 180;
+        return radians;
+    }
     function generatingPomodoroArray(cycles) {
         var arr = [];
         for(var i=0; i<pomodoroes*2 - 1; i++) {
@@ -63,6 +95,19 @@ function main() {
             seconds: seconds
         }
     }
+    function hardcodedCircles() {
+        // static circles
+        c.beginPath();
+        c.arc(x/2, y/2, r-10, degToRad(-90), degToRad(270), false);
+        c.lineWidth = 1;
+        c.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+        c.stroke();
+        c.beginPath();
+        c.arc(x/2, y/2, r+10, degToRad(-90), degToRad(270), false);
+        c.lineWidth = 1;
+        c.strokeStyle = c.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+        c.stroke();
+    }
     function hideAllActionButtons() {
         for (var i=0; i<$buttons.length; i++) {
             $buttons[i].classList.add('btn-hide');
@@ -75,6 +120,13 @@ function main() {
         j = 0; // initial cycle index
         pomodoroArray = generatingPomodoroArray(pomodoroes);
         updateScreen();
+        animatedClock();
+    }
+    function render() {
+        updateClock();
+        if(timerActive) {
+            activeInterval = setInterval(updateClock, 1000);
+        } 
     }
     function submitFormValues() {
         workingTime = $work.value;
@@ -84,20 +136,23 @@ function main() {
     }
     function updateScreen() {
         if (j % 2 === 0) {
-            $clock.style.color = '#FC4349';
+            updateColor = '#FC4349';
+            $clock.style.color = updateColor;
             $message.innerText = 'Working Time #' + (j/2 + 1);
             hideAllActionButtons();
             $start.classList.remove('btn-hide');
             $reset.classList.remove('btn-hide');
             $reset.disabled = true;
         } else if (j % 2 === 1 && j !== pomodoroArray.length - 1){
-            $clock.style.color = '#6DBCDB';
+            updateColor = '#6DBCDB';
+            $clock.style.color = updateColor;
             $message.innerText = 'Short Break Time';
             hideAllActionButtons();
             $start.classList.remove('btn-hide');
             $skip.classList.remove('btn-hide');
         } else {
-            $clock.style.color = '#D7DADB';
+            updateColor = '#D7DADB';
+            $clock.style.color = updateColor;
             $message.innerText = 'Long Break Time';
             hideAllActionButtons();
             $start.classList.remove('btn-hide');
@@ -106,8 +161,8 @@ function main() {
     }
     function updateClock() {
         total = getTimeRemaining(secondsRemaining);
-        $minutes.innerText = ('0' + total.minutes).slice(-2);
-        $seconds.innerText = ('0' + total.seconds).slice(-2);
+        // $minutes.innerText = ('0' + total.minutes).slice(-2);
+        // $seconds.innerText = ('0' + total.seconds).slice(-2);
         if(timerActive) {
             if(secondsRemaining === 0) {
                 clearInterval(activeInterval);
@@ -126,14 +181,9 @@ function main() {
                 updateScreen();
                 render();
             }
+            animatedClock();
             secondsRemaining--;
         }
-    }
-    function render() {
-        updateClock();
-        if(timerActive) {
-            activeInterval = setInterval(updateClock, 1000);
-        } 
     }
     
     // =============== ( EVENT LISTENERS ) =============== //
@@ -167,6 +217,7 @@ function main() {
             secondsRemaining = nextTime * 60;
         }
         render();
+        animatedClock();
     });
     $pause.addEventListener('click', function(){
         clearInterval(activeInterval);
@@ -189,6 +240,7 @@ function main() {
         secondsRemaining = nextTime * 60;
         updateScreen();
         render();
+        animatedClock();
     });
     $resume.addEventListener('click', function(){
         timerActive = true;
@@ -218,6 +270,7 @@ function main() {
             updateScreen();
         }
         render();
+        animatedClock();
     });
     $start.addEventListener('click', function(){
         timerActive = true;
@@ -231,5 +284,5 @@ function main() {
             $skip.classList.remove('btn-hide');
         }
         render();
-    });
+    }); 
 }

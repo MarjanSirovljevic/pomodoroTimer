@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <div id="clockField" class="hide    ">
+        <div id="clockField" class="hide">
             <div class="header">
                 <div id="settingsDiv">
                     <button id="settings"><i class="fa fa-cog fa-3x" aria-hidden="true"></i></button>
@@ -19,9 +19,7 @@
             </div>
             <div class="main">
                 <div id="clock">
-                    <span id="minutes"></span>
-                    <span>:</span>
-                    <span id="seconds"></span>
+                    <canvas></canvas>
                 </div>
             </div>
             <div class="footer">
@@ -43,19 +41,25 @@
                 <div id="formArea">
                     <div>
                         <label for="work">Work Time [minutes]</label>
-                        <input type="number" value="25" id="work">
+                        <input type="number" value="25" id="work" min="1" max="59">
                     </div>
                     <div>
                         <label for="short">Short Break [minutes]</label>
-                        <input type="number" value="5" id="short">
+                        <input type="number" value="5" id="short" min="1" max="59">
                     </div>
                     <div>
                         <label for="long">Long Break [minutes]</label>
-                        <input type="number" value="15" id="long">
+                        <input type="number" value="15" id="long" min="1" max="59">
                     </div>
                     <div>
                         <label for="delay">Delay [cycles]</label>
-                        <input type="number" value="4" id="delay">
+                        <input type="number" value="4" id="delay" min="1" max="10">
+                    </div>
+                    <div id="info">
+                        <div>
+                            <p>Time intervals range ( 1-59 )</p>
+                            <p>Delay range ( 1-10 )</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -64,7 +68,7 @@
                     <button id="submit">SUBMIT</button>
                 </div>
             </div>
-        </div>
+        </div>   
     </div>
     <script src="./js/audio.js"></script>
     <script src="./js/pomodoroDev.js"></script>

@@ -70,6 +70,10 @@ div#clockField {
 }
 #clock {
     font-size: 4em;
+    display: flex;
+}
+canvas {
+    margin: auto;
 }
 
 /* ------------------- FORM AREA ------------------- */
@@ -93,18 +97,32 @@ div#clockField {
     margin: 5px;
 }
 #formArea>div>label {
-    flex: 8;
+    flex: 4;
     padding: 8px;
     margin-right: 10px;
     text-align: right;
 }
 #formArea>div>input {
-    flex: 1;
+    flex: 2;
     text-align: center;
     padding: 8px;
     width: 100px;
 }
-
+#info {
+    display: flex;
+    padding: 20px;
+}
+#info>div {
+    margin: auto;
+    font-style: italic;
+    font-size: 18px;
+    color:palegreen;
+}
+#info>div>p {
+    margin: 0;
+    padding: 3px 0;
+    text-align: right;
+}
 /* ------------------- BUTTONS ------------------- */
 
 #buttons button {
@@ -152,4 +170,5 @@ button#settings:hover {
     color: #6DBCDB;
     color: #FFFFFF;
 } */
+
 
